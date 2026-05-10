@@ -107,7 +107,7 @@ Yes. The goals are strictly to validate the structural integrity of ID card stat
 ### 2. Are the features to be tested clearly identified?
 Yes. The identified features are:
 1. Registration Payload Processing.
-2. Multi-tier recursive location mapping (Province -> Village).
+2. Authentication and Secure Role-Based Login Workflows.
 3. The specific status transition from `LOST` directly to `FOUND`.
 4. Boundary rejections on missing inputs.
 
@@ -119,7 +119,7 @@ Yes, covering normal standard workflows comprehensively:
 | **TC-01** | Student Workflow | Complete web Registration as Student. | Profile writes, card initially updates to standard `LOST` status. |
 | **TC-02** | Workflow Constraints | Send Registration payload containing blank Username payloads. | System handles cleanly tossing HTTP 400 bad constraints dynamically. |
 | **TC-03** | Verification Transitions | Post Card Details through native Finder input panel. | Modifies respective ID tracker successfully to `FOUND` identity state. |
-| **TC-04** | Hierarchy Output | Query all application users identified within Kigali framework. | API effectively executes algorithm yielding all nested regional outputs. |
+| **TC-04** | Authentication Logic | Perform web login attempt using registered Student credentials. | System successfully validates database credentials directly granting secure application dashboard access. |
 
 ### 4. Tools or methods for tracking issues
 Issues are diagnosed primarily using **Spring Boot log traces**, whereby REST exception payloads write gracefully to `server_debug.log`. Version control methods strictly support tracking as **Git Checkouts** permit surgeons to pinpoint code reversions safely along timelines, maintaining stability structurally.
