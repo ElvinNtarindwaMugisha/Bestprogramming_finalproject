@@ -9,9 +9,9 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.university</groupId>
-	<artifactId>lostfound</artifactId>
+	<artifactId>LOSTFOUNDIDCARDSYS</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lostfound</name>
+	<name>LOSTFOUNDIDCARDSYS</name>
 	<description>Lost and Found ID Card Management System</description>
 	<properties>
 		<java.version>21</java.version>

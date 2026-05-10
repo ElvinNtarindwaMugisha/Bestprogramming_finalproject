@@ -38,6 +38,17 @@ public class IDCardService {
         }).orElseThrow(() -> new RuntimeException("IDCard not found with id: " + id));
     }
 
+    public Optional<IDCard> findByCardNumber(String cardNumber) {
+        return idCardRepository.findByCardNumber(cardNumber);
+    }
+
+    public IDCard updateStatus(Long id, String status) {
+        return idCardRepository.findById(id).map(card -> {
+            card.setStatus(status);
+            return idCardRepository.save(card);
+        }).orElseThrow(() -> new RuntimeException("IDCard not found: " + id));
+    }
+
     public void deleteIDCard(Long id) {
         idCardRepository.deleteById(id);
     }

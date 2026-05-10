@@ -2,6 +2,7 @@ package com.university.lostfound.service;
 
 import com.university.lostfound.model.*;
 import com.university.lostfound.repository.*;
+import com.university.lostfound.service.NotificationService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,18 +15,18 @@ public class FinderService {
     private final FinderRepository finderRepository;
     private final IDCardRepository idCardRepository;
     private final ClaimRepository claimRepository;
-    private final NotificationRepository notificationRepository;
+    private final NotificationService notificationService;
     private final LocationRepository locationRepository;
 
     public FinderService(FinderRepository finderRepository,
             IDCardRepository idCardRepository,
             ClaimRepository claimRepository,
-            NotificationRepository notificationRepository,
+            NotificationService notificationService,
             LocationRepository locationRepository) {
         this.finderRepository = finderRepository;
         this.idCardRepository = idCardRepository;
         this.claimRepository = claimRepository;
-        this.notificationRepository = notificationRepository;
+        this.notificationService = notificationService;
         this.locationRepository = locationRepository;
     }
 
@@ -74,12 +75,11 @@ public class FinderService {
 
         User user = idCard.getOwner();
         if (user != null) {
-            Notification notification = new Notification();
-            notification.setMessage("Your ID card " + idCard.getCardNumber()
-                    + " has been found at " + finder.getFoundLocation()
-                    + ". Please collect it from the Lost & Found Office.");
-            notification.setUser(user);
-            notificationRepository.save(notification);
+            notificationService.createNotification(
+                    "Your ID card " + idCard.getCardNumber()
+                            + " has been found at " + finder.getFoundLocation()
+                            + ". Please collect it from the Lost & Found Office.",
+                    user);
         }
 
         return savedFinder;

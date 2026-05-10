@@ -45,6 +45,9 @@ public class LocationService {
     @Transactional
     public void seedRwandaLocations() {
 
+        // Temporarily clear references to avoid foreign key constraint violations
+        // before truncating and rebuilding the entire self-referencing Location
+        // hierarchy.
         userRepository.clearLocationReferences();
 
         locationRepository.truncateTable();

@@ -18,4 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE TYPE(u) = User")
     List<User> findAllOnlyUsers();
+
+    java.util.Optional<User> findByRegistrationNumber(String registrationNumber);
 }

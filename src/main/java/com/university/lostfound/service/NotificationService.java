@@ -15,12 +15,15 @@ public class NotificationService {
         this.notificationRepository = notificationRepository;
     }
 
-    public List<Notification> getAllNotifications() {
-        return notificationRepository.findAll();
+    public List<Notification> getNotificationsByUserId(Long userId) {
+        return notificationRepository.findByUserIdOrderByNotificationIdDesc(userId);
     }
 
-    public Optional<Notification> getNotificationById(Long id) {
-        return notificationRepository.findById(id);
+    public Notification createNotification(String message, com.university.lostfound.model.User user) {
+        Notification notification = new Notification();
+        notification.setMessage(message);
+        notification.setUser(user);
+        return notificationRepository.save(notification);
     }
 
     public Notification createNotification(Notification notification) {
@@ -29,5 +32,9 @@ public class NotificationService {
 
     public void deleteNotification(Long id) {
         notificationRepository.deleteById(id);
+    }
+
+    public void clearFoundNotifications(com.university.lostfound.model.User user, String cardNumber) {
+        notificationRepository.deleteFoundNotificationsByCardNumber(user, cardNumber);
     }
 }

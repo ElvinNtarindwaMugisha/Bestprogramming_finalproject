@@ -21,6 +21,7 @@ public class User {
 
     @Column(unique = true)
     private String registrationNumber;
+    private String password;
 
     @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
     @JsonManagedReference

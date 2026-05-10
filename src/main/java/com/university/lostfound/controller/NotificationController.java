@@ -16,16 +16,9 @@ public class NotificationController {
         this.notificationService = notificationService;
     }
 
-    @GetMapping
-    public List<Notification> getAllNotifications() {
-        return notificationService.getAllNotifications();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Notification> getNotificationById(@PathVariable Long id) {
-        return notificationService.getNotificationById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping("/user/{userId}")
+    public List<Notification> getNotificationsByUserId(@PathVariable Long userId) {
+        return notificationService.getNotificationsByUserId(userId);
     }
 
     @PostMapping

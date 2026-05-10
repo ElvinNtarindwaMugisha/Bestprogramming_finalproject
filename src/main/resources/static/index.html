@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost &amp; Found ID Card System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- ============================================================
+         AUTH CONTAINER  (Login / Sign Up)
+    ============================================================ -->
+        <div id="auth-container" class="fade-in">
+            <div class="glass-card login-card">
+                <div class="brand">
+                    <i data-lucide="shield-check" class="brand-icon"></i>
+                    <h1>LostFound<span>ID</span></h1>
+                </div>
+
+                <!-- Login View -->
+                <div id="login-form-view">
+                    <h2>Welcome Back</h2>
+                    <p class="subtitle">Sign in to your account</p>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="regNumber">Registration Number / Admin ID</label>
+                            <input type="text" id="regNumber" placeholder="e.g. REG-001 or @admin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Login</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </form>
+                    <p class="auth-footer">Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+                </div>
+
+                <!-- Sign Up View -->
+                <div id="signup-form-view" class="hidden">
+                    <h2>Create Account</h2>
+                    <p class="subtitle">Join the ID Card tracking system</p>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupRegNumber">Registration Number</label>
+                            <input type="text" id="signupRegNumber" placeholder="REG-123456 (use @name for admin)"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Register</span>
+                            <i data-lucide="user-plus"></i>
+                        </button>
+                    </form>
+                    <p class="auth-footer">Already have an account? <a href="#" id="show-login">Login</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+         STUDENT PORTAL  (hidden until student logs in)
+    ============================================================ -->
+        <div id="student-container" class="hidden">
+            <!-- Top Nav Bar -->
+            <header class="student-topbar glass-effect">
+                <div class="brand" style="margin-bottom:0;">
+                    <i data-lucide="shield-check" class="brand-icon"></i>
+                    <span>LostFound<strong>ID</strong> — Student Portal</span>
+                </div>
+                <div class="student-topbar-right">
+                    <button id="student-theme-toggle" class="icon-btn" title="Toggle Light / Dark Mode"
+                        style="margin-right:0.25rem;">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button id="student-notifications-btn" class="icon-btn" title="Notifications"
+                        style="margin-right:0.5rem;">
+                        <i data-lucide="bell"></i>
+                        <span id="notif-badge" class="badge hidden"></span>
+                    </button>
+                    <div class="avatar" id="student-avatar">ST</div>
+                    <div>
+                        <p id="student-name" style="font-size:0.9rem;font-weight:600;">Student</p>
+                        <small id="student-reg" style="color:var(--text-secondary);font-size:0.75rem;"></small>
+                    </div>
+                    <button id="student-logout-btn" class="logout-link" title="Logout">
+                        <i data-lucide="log-out"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="student-main">
+                <!-- Hero -->
+                <div class="student-hero animate-in">
+                    <h1>What do you need help with?</h1>
+                    <p>Use the options below to report a lost or found ID card.</p>
+                </div>
+
+                <!-- Action Cards -->
+                <div class="student-action-grid animate-in">
+                    <div class="student-action-card lost-card" onclick="openReportModal('LOST')">
+                        <div class="student-action-icon">
+                            <i data-lucide="search-x"></i>
+                        </div>
+                        <h2>I Lost My ID</h2>
+                        <p>Report your ID card as lost. The admin team will be notified and help track it down.</p>
+                        <button class="btn btn-primary" style="margin-top:1.5rem;width:auto;padding:0.65rem 2rem;"
+                            onclick="event.stopPropagation();openReportModal('LOST')">
+                            <i data-lucide="flag"></i> Report Lost
+                        </button>
+                    </div>
+
+                    <div class="student-action-card found-card" onclick="openReportModal('FOUND')">
+                        <div class="student-action-icon found-icon">
+                            <i data-lucide="search-check"></i>
+                        </div>
+                        <h2>I Found Someone's ID</h2>
+                        <p>Help reunite someone with their ID card. Submit finder details and we'll notify the owner.
+                        </p>
+                        <button class="btn btn-success" style="margin-top:1.5rem;width:auto;padding:0.65rem 2rem;"
+                            onclick="event.stopPropagation();openReportModal('FOUND')">
+                            <i data-lucide="hand-helping"></i> Report Found
+                        </button>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- ============================================================
+         ADMIN PORTAL  (hidden until admin logs in)
+    ============================================================ -->
+        <div id="admin-container" class="hidden">
+            <!-- Sidebar -->
+            <nav class="sidebar glass-effect">
+                <div class="sidebar-header">
+                    <i data-lucide="shield-check" class="brand-icon"></i>
+                    <span>LostFoundID</span>
+                </div>
+                <ul class="nav-links">
+                    <li class="active" data-page="dashboard">
+                        <i data-lucide="layout-dashboard"></i><span>Dashboard</span>
+                    </li>
+                    <li data-page="id-cards">
+                        <i data-lucide="credit-card"></i><span>ID Cards</span>
+                    </li>
+                    <li data-page="claims">
+                        <i data-lucide="file-check"></i><span>Claims</span>
+                    </li>
+                    <li data-page="finders">
+                        <i data-lucide="search-check"></i><span>Finders</span>
+                    </li>
+                    <li data-page="users">
+                        <i data-lucide="users"></i><span>Users</span>
+                    </li>
+                </ul>
+                <div class="sidebar-footer">
+                    <div class="user-info">
+                        <div class="avatar" id="admin-avatar">AD</div>
+                        <div class="details">
+                            <p id="admin-name">Admin</p>
+                            <small>Administrator</small>
+                        </div>
+                    </div>
+                    <button id="admin-logout-btn" class="logout-link" title="Logout">
+                        <i data-lucide="log-out"></i>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="content-area">
+                <header class="top-header">
+                    <h1 id="admin-page-title">Dashboard</h1>
+                    <div class="header-actions">
+                        <button id="theme-toggle" class="icon-btn"><i data-lucide="sun"></i></button>
+                    </div>
+                </header>
+                <section id="admin-page-content">
+                    <!-- Dynamic admin content injected here -->
+                </section>
+            </main>
+        </div>
+
+    </div><!-- #app -->
+
+    <!-- ============================================================
+     SHARED MODAL
+============================================================ -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="glass-card modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal</h3>
+                <button id="close-modal" class="icon-btn"><i data-lucide="x"></i></button>
+            </div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

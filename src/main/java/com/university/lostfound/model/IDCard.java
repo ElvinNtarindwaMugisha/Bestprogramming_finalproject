@@ -17,16 +17,17 @@ public class IDCard {
     @Column(unique = true)
     private String cardNumber;
 
-    
     private String status;
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonBackReference // Prevents infinite recursion during Jackson JSON serialization when fetching
+
     private User owner;
 
     @OneToMany(mappedBy = "idCard", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
+    @JsonIgnore // Omits claims from standard API payloads to reduce JSON size and avoid
+
     private List<Claim> claims;
 
     public Long getIdCardId() {

@@ -16,13 +16,16 @@ public class Administration {
 
     private String adminName;
     private String officeName;
+    private String password;
 
-    @Transient
+    @Transient // Required by the controller for processing returns, but explicitly excluded
+               // from database persistence.
     private String cardNumber;
 
     @ManyToMany
     @JoinTable(name = "admin_claim", joinColumns = @JoinColumn(name = "admin_id"), inverseJoinColumns = @JoinColumn(name = "claim_id"))
-    @JsonIgnore
+    @JsonIgnore // Excludes the potentially massive set of resolved claims from Admin profile
+
     private Set<Claim> claims;
 
     public Long getAdminId() {
@@ -55,6 +58,14 @@ public class Administration {
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<Claim> getClaims() {

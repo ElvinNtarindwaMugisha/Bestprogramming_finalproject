@@ -37,6 +37,8 @@ public class UserService {
     @Transactional
     public User createUser(User user) {
 
+        // Resolve location referencing using the provided Village code.
+        // This abstracts the complex hierarchy validation from the API client.
         if (user.getLocation() != null && user.getLocation().getCode() != null) {
             String villageCode = user.getLocation().getCode();
             Location location = locationRepository.findByCode(villageCode)
@@ -98,6 +100,12 @@ public class UserService {
                 .toList();
     }
 
+    /**
+     * Recursively traverses the self-referencing Location table upwards to
+     * determine
+     * if a given location belongs to a specified parent code (e.g., checking if a
+     * Village is in a Province).
+     */
     private boolean isChildOf(Location loc, String parentCode) {
         if (loc == null)
             return false;

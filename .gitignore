@@ -24,3 +24,7 @@ target/
 build/
 node_modules/
 dist/
+
+# Docker & Environment secrets
+.env
+docker-compose.override.yml
