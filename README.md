@@ -11,8 +11,6 @@
 ### 2. Functional Diagram indicating the internal working of the case study
 <img width="375" height="302" alt="image" src="https://github.com/user-attachments/assets/297cc596-3105-4ab3-ad75-64bfc026fbcd" />
 
-<br><br><br>
-
 ### 3. Brief statement clearly explaining the problem faced by the company
 On a busy university campus, hundreds of students lose their identification cards each semester. The process of returning these cards is highly inefficient. Students have no centralized platform to report lost cards, and finders do not know where to register them. Matching finders with owners manually relies on untracked, error-prone paper systems, causing unnecessary delays and replacement costs. This system replaces that manual bottleneck with a digitally automated tracking platform.
 
