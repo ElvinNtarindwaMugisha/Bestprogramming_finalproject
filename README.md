@@ -9,7 +9,8 @@
 - **Case Study Chosen:** University Campus Environment (Student and Staff IDs).
 
 ### 2. Functional Diagram indicating the internal working of the case study
-*[Title: Functional Diagram]*
+<img width="375" height="302" alt="image" src="https://github.com/user-attachments/assets/297cc596-3105-4ab3-ad75-64bfc026fbcd" />
+
 <br><br><br>
 
 ### 3. Brief statement clearly explaining the problem faced by the company
