@@ -26,21 +26,25 @@ Below are the spaces allocated for the required UML diagrams indicating the stru
 <br><br><br>
 
 **2. Class Diagram**
+
 <img width="329" height="281" alt="image" src="https://github.com/user-attachments/assets/20873bc8-0f59-4f52-a14b-05c61697dbf6" />
 
 <br><br><br>
 
 **3. Activity Diagram**
+
 <img width="248" height="280" alt="image" src="https://github.com/user-attachments/assets/9d710812-04aa-4e2e-89ad-46b5ace0293e" />
 
 <br><br><br>
 
 **4. Sequence Diagram**
+
 <img width="251" height="289" alt="image" src="https://github.com/user-attachments/assets/32c1765d-d460-4227-a040-c71f1d49f852" />
 
 <br><br><br>
 
 **5. Component Diagram**
+
 <img width="247" height="284" alt="image" src="https://github.com/user-attachments/assets/e15b0f00-2ba1-4732-86aa-284f61bb1072" />
 
 <br><br><br>
