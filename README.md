@@ -20,6 +20,7 @@ On a busy university campus, hundreds of students lose their identification card
 Below are the spaces allocated for the required UML diagrams indicating the structured system flow:
 
 **1. Use case Diagram**
+
 <img width="328" height="289" alt="image" src="https://github.com/user-attachments/assets/edb448f3-0c23-42b1-bd41-5d827419f2ea" />
 
 <br><br><br>
